@@ -1,0 +1,32 @@
+{
+  "name": "webpack-target-property",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "lint": "npm-run-all lint:*",
+    "lint:prettier": "prettier --write 'src/**/*.{js,ts}'",
+    "build": "npm-run-all build:*",
+    "build:target-web": "webpack --config webpack.target-web.config.js --mode development",
+    "build:target-web-with-es5": "webpack --config webpack.target-web-with-es5.config.js --mode development",
+    "build:target-node": "webpack --config webpack.target-node.config.js --mode development",
+    "build:target-node-with-es5": "webpack --config webpack.target-node-with-es5.config.js --mode development",
+    "build:target-async-node": "webpack --config webpack.target-async-node.config.js --mode development",
+    "build:target-async-node-with-es5": "webpack --config webpack.target-async-node-with-es5.config.js --mode development",
+    "execute": "npm-run-all execute:*",
+    "execute:target-node": "node ./dist/target-node/entry.js",
+    "execute:target-node-with-es5": "node ./dist/target-node-with-es5/entry.js",
+    "execute:target-async-node": "node ./dist/target-async-node/entry.js",
+    "execute:target-async-node-with-es5": "node ./dist/target-async-node-with-es5/entry.js"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.17.8",
+    "@babel/preset-env": "^7.16.11",
+    "babel-loader": "^8.2.4",
+    "html-webpack-plugin": "^5.5.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.6.1",
+    "webpack": "^5.72.0",
+    "webpack-cli": "^4.9.2"
+  }
+}
