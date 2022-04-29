@@ -4,10 +4,13 @@
     <meta charset="utf-8" />
     <title>Webpack App</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script>
+      var exports = {};
+    </script>
     <script src="manifest.js"></script>
     <script src="entry.js"></script>
     <script>
-      const _executor = new LibraryVar.executor();
+      const _executor = new exports.LibraryCommonjs.executor();
       _executor.execute();
     </script>
   </head>

@@ -15,6 +15,8 @@
     "build:output-library-type-window": "webpack --config webpack.output-library-type-window.config.js --mode development",
     "build:output-library-type-global": "webpack --config webpack.output-library-type-global.config.js --mode development",
     "build:output-library-type-global-on-node": "webpack --config webpack.output-library-type-global-on-node.config.js --mode development",
+    "build:output-library-type-commonjs": "webpack --config webpack.output-library-type-commonjs.config.js --mode development",
+    "build:output-library-type-commonjs-on-node": "webpack --config webpack.output-library-type-commonjs-on-node.config.js --mode development",
     "execute": "npm-run-all execute:*",
     "execute:output-library-type-this-on-node": "node ./dist/output-library-type-this-on-node/index-for-this-on-node.js",
     "execute:output-library-type-global-on-node": "node ./dist/output-library-type-global-on-node/index-for-global-on-node.js"
