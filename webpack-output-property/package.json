@@ -1,0 +1,32 @@
+{
+  "name": "webpack-output-property",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "lint": "npm-run-all lint:*",
+    "lint:prettier": "prettier --write 'src/**/*.{js,ts}'",
+    "build": "npm-run-all build:*",
+    "build:output-library-type-var": "webpack --config webpack.output-library-type-var.config.js --mode development",
+    "build:output-library-type-assign": "webpack --config webpack.output-library-type-assign.config.js --mode development",
+    "build:output-library-type-assign-properties": "webpack --config webpack.output-library-type-assign-properties.config.js --mode development",
+    "build:output-library-type-this": "webpack --config webpack.output-library-type-this.config.js --mode development",
+    "build:output-library-type-this-on-node": "webpack --config webpack.output-library-type-this-on-node.config.js --mode development",
+    "build:output-library-type-window": "webpack --config webpack.output-library-type-window.config.js --mode development",
+    "build:output-library-type-global": "webpack --config webpack.output-library-type-global.config.js --mode development",
+    "build:output-library-type-global-on-node": "webpack --config webpack.output-library-type-global-on-node.config.js --mode development",
+    "execute": "npm-run-all execute:*",
+    "execute:output-library-type-this-on-node": "node ./dist/output-library-type-this-on-node/index-for-this-on-node.js",
+    "execute:output-library-type-global-on-node": "node ./dist/output-library-type-global-on-node/index-for-global-on-node.js"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.17.9",
+    "@babel/preset-env": "^7.16.11",
+    "babel-loader": "^8.2.5",
+    "copy-webpack-plugin": "^10.2.4",
+    "html-webpack-plugin": "^5.5.0",
+    "npm-run-all": "^4.1.5",
+    "webpack": "^5.72.0",
+    "webpack-cli": "^4.9.2"
+  }
+}

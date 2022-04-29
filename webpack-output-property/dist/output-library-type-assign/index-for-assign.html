@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Webpack App</title>
+    <script>
+      var LibraryAssign = {
+        a: "this object is not used as this variable will be assigned to expoted object in entry.js"
+      };
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="manifest.js"></script>
+    <script src="entry.js"></script>
+    <script>
+      const _executor = new LibraryAssign.executor();
+      _executor.execute();
+    </script>
+  </head>
+  <body>
+  </body>
+</html>

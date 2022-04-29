@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Webpack App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+      var LibraryAssignProperties = {
+        a: 1, // these properties will be remain, and exported object from entry.js will be set to this variable as a property
+        b: "2",
+      };
+    </script>
+    <script src="manifest.js"></script>
+    <script src="entry.js"></script>
+    <script>
+      const _executor = new LibraryAssignProperties.executor();
+      _executor.execute();
+    </script>
+  </head>
+  <body>
+  </body>
+</html>
