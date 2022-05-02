@@ -52,3 +52,8 @@
         - ※ ソースコードから ES Modules で名前付きエクスポートを行った場合で試したが、ベースが CommonJS でも変わらないだろう。
       - したがって、`const { エクスポートしたもの } = require("バンドルしたファイル");` で利用可能になることが確認できた。
         - 同様の type オプションに `commonjs` オプションがあるが、大多数の人が必要としているのはこちらだろう。
+    - ["type: "commonjs-static"](https://webpack.js.org/configuration/output/#type-commonjs-static) の場合
+      - バンドルされたエントリーポイントで、 `exports.<exported_key> = エクスポートするものの集合.<exported_key>;` と、紐付けられることが見て取れた。
+        - この `commonjs-static` オプションについても、 `commonjs` オプションの場合と同様に、`target: "node"` の場合には、ローカル変数として `exports` が宣言されているために Node.js の環境からは読み込めない形となっており、また同様に、`target: "web"` の場合には、エントリーポイントのスコープで宣言した `exports` オブジェクトに対して紐付けられることがわかった。
+      - したがって、web 環境で使う場合には、既に宣言された `exports` オブジェクトにエクスポートした対象が紐づくことになるので、 `exports.<exported_key>` として利用可能になることがわかった。
+        - Node.js 環境で使用できないので、自分の勘違いなのではないかと思ってしまっている。
