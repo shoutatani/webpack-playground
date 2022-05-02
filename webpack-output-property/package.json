@@ -18,9 +18,11 @@
     "build:output-library-type-commonjs": "webpack --config webpack.output-library-type-commonjs.config.js --mode development",
     "build:output-library-type-commonjs-on-node": "webpack --config webpack.output-library-type-commonjs-on-node.config.js --mode development",
     "build:output-library-type-module": "webpack --config webpack.output-library-type-module.config.js --mode development",
+    "build:output-library-type-commonjs2-on-node": "webpack --config webpack.output-library-type-commonjs2-on-node.config.js --mode development",
     "execute": "npm-run-all execute:*",
     "execute:output-library-type-this-on-node": "node ./dist/output-library-type-this-on-node/index-for-this-on-node.js",
     "execute:output-library-type-global-on-node": "node ./dist/output-library-type-global-on-node/index-for-global-on-node.js",
+    "execute:output-library-type-commonjs2-on-node": "node ./dist/output-library-type-commonjs2-on-node/index-for-commonjs2-on-node.js",
     "dev": "webpack serve --static dist --open"
   },
   "devDependencies": {

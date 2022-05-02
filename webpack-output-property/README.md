@@ -46,4 +46,9 @@
         - 説明にある通り、2022/04 時点では、`experiments.outputModule` を `true` にしないと出力できない。
         - また、target プロパティに関して、web 環境の場合は `es2020` 以上の指定が必要で、Node.js 環境の場合は `node12.7` 以上の指定が必要となっている。
           - 参考：https://github.com/webpack/webpack/blob/v5.72.0/lib/config/target.js#L180
-      - したがって、`import { エクスポートしたものもの } from "バンドルしたファイル";` で利用可能になることが確認できた。
+      - したがって、`import { エクスポートしたもの } from "バンドルしたファイル";` で利用可能になることが確認できた。
+    - ["type: "commonjs2"](https://webpack.js.org/configuration/output/#type-commonjs2) の場合
+      - バンドルされたエントリーポイントで、名前付きエクスポートをした場合、 `module.exports = エクスポートするものの集合;` と、紐付けられることがわかった。
+        - ※ ソースコードから ES Modules で名前付きエクスポートを行った場合で試したが、ベースが CommonJS でも変わらないだろう。
+      - したがって、`const { エクスポートしたもの } = require("バンドルしたファイル");` で利用可能になることが確認できた。
+        - 同様の type オプションに `commonjs` オプションがあるが、大多数の人が必要としているのはこちらだろう。
