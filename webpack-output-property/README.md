@@ -57,3 +57,5 @@
         - この `commonjs-static` オプションについても、 `commonjs` オプションの場合と同様に、`target: "node"` の場合には、ローカル変数として `exports` が宣言されているために Node.js の環境からは読み込めない形となっており、また同様に、`target: "web"` の場合には、エントリーポイントのスコープで宣言した `exports` オブジェクトに対して紐付けられることがわかった。
       - したがって、web 環境で使う場合には、既に宣言された `exports` オブジェクトにエクスポートした対象が紐づくことになるので、 `exports.<exported_key>` として利用可能になることがわかった。
         - Node.js 環境で使用できないので、自分の勘違いなのではないかと思ってしまっている。
+    - ["type: "amd"](https://webpack.js.org/configuration/output/#type-amd) の場合
+      - amd 形式/RequireJS について詳しくないため、出力だけ行ってみたが、`define` オブジェクトを使ったアウトプットが確認できた。
