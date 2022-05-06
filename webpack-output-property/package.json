@@ -22,6 +22,7 @@
     "build:output-library-type-commonjs-static": "webpack --config webpack.output-library-type-commonjs-static.config.js --mode development",
     "build:output-library-type-commonjs-static-on-node": "webpack --config webpack.output-library-type-commonjs-static-on-node.config.js --mode development",
     "build:output-library-type-amd": "webpack --config webpack.output-library-type-amd.config.js --mode development",
+    "build:output-library-type-amd-require": "webpack --config webpack.output-library-type-amd-require.config.js --mode development",
     "execute": "npm-run-all execute:*",
     "execute:output-library-type-this-on-node": "node ./dist/output-library-type-this-on-node/index-for-this-on-node.js",
     "execute:output-library-type-global-on-node": "node ./dist/output-library-type-global-on-node/index-for-global-on-node.js",

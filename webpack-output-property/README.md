@@ -59,3 +59,5 @@
         - Node.js 環境で使用できないので、自分の勘違いなのではないかと思ってしまっている。
     - ["type: "amd"](https://webpack.js.org/configuration/output/#type-amd) の場合
       - amd 形式/RequireJS について詳しくないため、出力だけ行ってみたが、`define` オブジェクトを使ったアウトプットが確認できた。
+    - ["type: "amd-require"](https://webpack.js.org/configuration/output/#type-amd-require) の場合
+      - amd 形式/RequireJS について詳しくないため、出力だけ行ってみたが、`require` オブジェクトを使ったアウトプットが確認できた。
