@@ -23,10 +23,12 @@
     "build:output-library-type-commonjs-static-on-node": "webpack --config webpack.output-library-type-commonjs-static-on-node.config.js --mode development",
     "build:output-library-type-amd": "webpack --config webpack.output-library-type-amd.config.js --mode development",
     "build:output-library-type-amd-require": "webpack --config webpack.output-library-type-amd-require.config.js --mode development",
+    "build:output-library-type-umd": "webpack --config webpack.output-library-type-umd.config.js --mode development",
     "execute": "npm-run-all execute:*",
     "execute:output-library-type-this-on-node": "node ./dist/output-library-type-this-on-node/index-for-this-on-node.js",
     "execute:output-library-type-global-on-node": "node ./dist/output-library-type-global-on-node/index-for-global-on-node.js",
     "execute:output-library-type-commonjs2-on-node": "node ./dist/output-library-type-commonjs2-on-node/index-for-commonjs2-on-node.js",
+    "execute:output-library-type-umd": "node ./dist/output-library-type-umd/index-for-umd.js",
     "dev": "webpack serve --static dist --open"
   },
   "devDependencies": {
