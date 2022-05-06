@@ -37,8 +37,8 @@
       - バンドルされたエントリーポイントで、 `exports.<library.name> = エクスポートするもの;` と、紐付けられることが見て取れた。
         - これは、https://github.com/webpack/webpack/issues/1114#issuecomment-931050560 にて詳細に解説されている通り、`commonjs` の設定はあくまで CommonJS の仕様に基づいて `exports` オブジェクトに対してエクスポートする、という仕様を実現しており、それは Node.js の exports/require に対応しているものではなく、Node.js の `require` では読み込めないことを確認できた。
           - `dist/output-library-type-commonjs-on-node/entry.js` を見れば分かる通り、`target: "node"` で出力した場合、ローカルで`var exports = {};` と exports を独自に宣言してしまっているため、Node.js の `require` で読み込めるものではなかった。(Node.js のモジュールで渡されるはずの `exports` オブジェクトを隠蔽してしまっている)
+            - ただし、webpack@4 系で同様の出力を行ってみたら、上述のようなローカルで exports は宣言しておらず、Node.js 環境でも使えた。仕様について詳しいわけではないが、これは仕様のミスに思える。
           - 一方で、`dist/output-library-type-commonjs/entry.js` を見れば分かる通り、`target: "web"` で出力した場合、 `exports.<library.name> = エクスポートするもの;` としているため、エントリーポイントのスコープで宣言した `exports` オブジェクトに対して紐付けられることがわかった。
-          - よって、CommonJS の仕様を解釈して処理する独自の処理系を作るのであれば、それに応じた独自の target タイプを構築し、そこで自ら webpack が生成した `exports` をハンドリングするよう期待されているものと思われる。
       - したがって、web 環境で使う場合には、`assign` の場合と同様に、既に宣言された `exports` オブジェクトにエクスポートした対象が紐づくことになるので、 `exports.<library.name>` として利用可能になることがわかった。
   - output.library.type オプションが、モジュールシステムを用いたモジュールの受け渡しの場合
     - ["type: "module"](https://webpack.js.org/configuration/output/#type-module) の場合
@@ -55,8 +55,8 @@
     - ["type: "commonjs-static"](https://webpack.js.org/configuration/output/#type-commonjs-static) の場合
       - バンドルされたエントリーポイントで、 `exports.<exported_key> = エクスポートするものの集合.<exported_key>;` と、紐付けられることが見て取れた。
         - この `commonjs-static` オプションについても、 `commonjs` オプションの場合と同様に、`target: "node"` の場合には、ローカル変数として `exports` が宣言されているために Node.js の環境からは読み込めない形となっており、また同様に、`target: "web"` の場合には、エントリーポイントのスコープで宣言した `exports` オブジェクトに対して紐付けられることがわかった。
+          - こちらも、`commonjs` の場合と同様、ローカルで exports を宣言するのは仕様のミスではないかと思っている。。
       - したがって、web 環境で使う場合には、既に宣言された `exports` オブジェクトにエクスポートした対象が紐づくことになるので、 `exports.<exported_key>` として利用可能になることがわかった。
-        - Node.js 環境で使用できないので、自分の勘違いなのではないかと思ってしまっている。
     - ["type: "amd"](https://webpack.js.org/configuration/output/#type-amd) の場合
       - amd 形式/RequireJS について詳しくないため、出力だけ行ってみたが、`define` オブジェクトを使ったアウトプットが確認できた。
     - ["type: "amd-require"](https://webpack.js.org/configuration/output/#type-amd-require) の場合
